@@ -4,8 +4,10 @@
 **/*.pyc
 **/__pycache__
 **/db.sqlite3
+
 # Backup files
 **/*.bak
+
 # Sublime Text #
 **/*.sublime-workspace
 **/*.sublime-project
