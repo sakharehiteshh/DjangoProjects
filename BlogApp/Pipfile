@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 django = "==3.2.15"
+django-taggit = "==3.0.0"
 
 [dev-packages]
 
