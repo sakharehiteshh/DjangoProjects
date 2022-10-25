@@ -1,10 +1,19 @@
 from django.contrib import admin
-from .models import Post
+from django.db.models import Count
 from .models import Post, Comment
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-	list_display = ('title','slug','author','publish','status')
+	def comment_count(self, obj):
+		return obj.comment_count
+	comment_count.admin_order_field = 'comment_count'
+
+	def get_queryset(self, request):
+		queryset = super().get_queryset(request)
+		queryset = queryset.annotate(comment_count=Count("comments"))
+		return queryset
+
+	list_display = ('title','slug','author','comment_count', 'publish','status')
 	list_filter = ('status', 'created', 'publish', 'author')
 	search_fields = ('title', 'body')
 	prepopulated_fields = {'slug': ('title',)}

@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-(5c(^&fv&c@)7xm*7r&35h5@!!&phui&t+^m@y3%ne*5=6sccw
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+SITE_ID = 1
 ALLOWED_HOSTS = []
 
 
@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'taggit',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'django.contrib.postgres',
     # New Stuff
 ]
 
@@ -78,8 +81,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'blog',
+        'USER': 'bloguser',
+        'PASSWORD': 'test_password',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
