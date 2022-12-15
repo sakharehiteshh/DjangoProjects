@@ -8,6 +8,7 @@ pillow = "==8.4.0"
 werkzeug = "==2.2.2"
 pyopenssl = "==22.1.0"
 certifi = "*"
+redis = "*"
 
 [dev-packages]
 
